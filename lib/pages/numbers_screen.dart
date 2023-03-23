@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-class NumbersScreen extends StatelessWidget {
+class NumbersScreen extends StatefulWidget {
+  @override
+  State<NumbersScreen> createState() => _NumbersScreenState();
+}
+
+class _NumbersScreenState extends State<NumbersScreen> {
+  dynamic numberOF = 0;
+
   void getAudio(int number) {
     final player = AudioPlayer();
     player.play(AssetSource('assets_number_$number.wav'));
+
+    setState(() {
+      numberOF = number;
+    });
   }
 
   Expanded drawButton({required Color color, required int number}) {
     return Expanded(
-      child: TextButton(
+      child: ElevatedButton(
         onPressed: () {
           getAudio(number);
         },
-        style: TextButton.styleFrom(
+        style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.all(16.0),
           backgroundColor: color,
           textStyle: const TextStyle(fontSize: 35, color: Colors.black),
@@ -26,12 +37,9 @@ class NumbersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, String>;
-    final nameElnur = args['name'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('$nameElnur'),
+        title: Text('$numberOF'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniStartFloat,
       floatingActionButton: FloatingActionButton(
