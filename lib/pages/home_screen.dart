@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home page'),
       ),
+    
       body: Container(
         child: Column(
           children: [

@@ -40,10 +40,11 @@ class _NumbersScreenState extends State<NumbersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('$numberOF'),
+        centerTitle: true,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniStartFloat,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.back_hand),
+        child: Icon(Icons.arrow_back),
         onPressed: () => {
           Navigator.pushNamed(context, '/home'),
         },
